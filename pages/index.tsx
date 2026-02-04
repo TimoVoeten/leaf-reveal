@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 const TOTAL_LEAVES = 3000;
 
@@ -23,6 +23,14 @@ export default function Home() {
       leaf: leafPngs[i % leafPngs.length],
     }));
   }, []);
+    useEffect(() => {
+    fetch("/api/state")
+      .then((r) => r.json())
+      .then((d) => {
+        if (d.removed) setRemoved(new Set(d.removed));
+      });
+  }, []);
+
 
   async function claim() {
     setMsg("");
