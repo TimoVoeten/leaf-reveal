@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 
-const TOTAL_LEAVES = 3000;
+const TOTAL_LEAVES = 20;
 
 function rand(min: number, max: number) {
   return Math.random() * (max - min) + min;
